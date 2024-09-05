@@ -50,7 +50,7 @@ public class ProdutosDAO {
             JOptionPane.showMessageDialog(null, "Erro ao vender produto: " + e.getMessage());
             return false;
         } finally {
-            try { conn.close(); } catch (SQLException e) { e.printStackTrace(); }
+            try { conn.close(); } catch (SQLException e) {}
         }
     }
 
@@ -82,7 +82,32 @@ public class ProdutosDAO {
         return listagem;
     }
 
-    void cadastrarProduto(ProdutosDTO produto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+     public boolean cadastrarProduto(ProdutosDTO produto) {
+        String sql = "INSERT INTO produtos (nome, valor, status) VALUES (?, ?, ?)";
+        
+        try {
+            conn = new ConectaDAO().connectDB();
+            prep = conn.prepareStatement(sql);
+            
+            // Definindo os parâmetros da query
+            prep.setString(1, produto.getNome());
+            prep.setInt(2, produto.getValor());
+            prep.setString(3, produto.getStatus());
+            
+            int rowsAffected = prep.executeUpdate(); // Executa o comando SQL
+
+            return rowsAffected > 0; // Retorna true se o produto foi cadastrado com sucesso
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Erro ao cadastrar produto: " + e.getMessage());
+            return false;
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close(); // Fecha a conexão com o banco de dados
+                }
+            } catch (SQLException e) {
+            }
+        }
     }
 }
