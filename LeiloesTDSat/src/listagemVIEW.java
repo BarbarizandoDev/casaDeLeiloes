@@ -190,7 +190,7 @@ public class listagemVIEW extends javax.swing.JFrame {
     private javax.swing.JTable listaProdutos;
     // End of variables declaration//GEN-END:variables
 
-   public class vendasVIEW extends javax.swing.JFrame {
+  public class vendasVIEW extends javax.swing.JFrame {
 
         private javax.swing.JTable tabelaVendas;
         private javax.swing.JScrollPane jScrollPaneVendas;
