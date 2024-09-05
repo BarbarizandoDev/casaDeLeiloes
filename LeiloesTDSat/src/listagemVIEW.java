@@ -3,10 +3,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
-
-
-
+/**
+ *
+ * @author barba
+ */
 public class listagemVIEW extends javax.swing.JFrame {
 
     public listagemVIEW() {
